@@ -8,7 +8,7 @@ const port = process.env.PORT || 4000;
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = ['https://ehasselgren.github.io/munamii-cakery/']; 
+const allowedOrigins = ['https://ehasselgren.github.io/']; 
 
 const corsOptions = {
     origin: function (origin, callback) {
