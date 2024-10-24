@@ -6,7 +6,21 @@ const cors = require('cors');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+
+const allowedOrigins = ['https://ehasselgren.github.io/munamii-cakery/']; 
+
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+};
+
+app.use(cors(corsOptions));
+
 
 console.log(process.env.MONGODB_URI)
 mongoose.connect(process.env.MONGODB_URI, {
